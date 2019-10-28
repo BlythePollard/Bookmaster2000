@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#shebang line tells bash terminal that program is in ruby
+
+require_relative "../lib/final_project"
+
+#this is the run file/executable file--what runs when program is called
+
+FinalProject::CLI.new.call
+#using FinalProject module connects CLI to this specific project so clis don't interfere when using multiple gems together
+#.new: class method that triggers initialize method (instance method--instance is put through it) on cli 
