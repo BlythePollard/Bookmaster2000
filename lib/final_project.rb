@@ -3,8 +3,10 @@
 require_relative "./final_project/version"
 require_relative "./final_project/cli"
 require_relative "./final_project/book"
+require_relative "./final_project/scraper"
 
 require 'pry'
+require 'nokogiri'
 
 module FinalProject
   class Error < StandardError; end

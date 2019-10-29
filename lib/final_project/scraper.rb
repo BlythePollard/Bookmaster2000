@@ -1,24 +1,49 @@
 class FinalProject::Scraper
 
-  def get_page
-    Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
+  def self.scrape_books(genre)
+    # page = Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
+    # books = page.css("div.resultShown")
+    # books.each do |book|
+    #    upvotes = book.css("strong.result").text #gsub
+    #    title = book.css("img").attr('alt').value
+    #    url = "hello url"
+    #    FinalProject::Book.new(title, upvotes, url)
+    # end
+    FinalProject::Book.new("title1", "upvotes1", "url1")
+    FinalProject::Book.new("title2", "upvotes2", "url2")
   end
 
-  def scrape_books
-    self.get_page.css("div.answerWrapper")
-  end
 
-  def make_books
-    self.get_page.css("div.answerWrapper").each do |book|
-      #can I scrape things within a hover box? (section.tooltip) If not, can only do title/author and url
-      #but will this url work? It's not complete...
-      book = Book.new
-      book.title =
-      book.description =
-      book.upvotes =
-      book.url =
+ # scraper method ready to scrape anything passed into it --all goodreads index pages are same as fiction ones
+ # if all else fails, just offer one section
+ #   start app, see list, choose more, see information, go back and choose another
 
-  end
+
+
+
+  # def get_page
+  #   page = Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
+  # end
+  #
+  # def scrape_books
+  #   self.get_page.css("div.resultShown")
+  #   binding.pry
+  # end
+  #
+  # def make_books
+  #   books = page.css("div.resultShown")
+  #   books.each do |book|
+  #     upvotes = book.css("strong.result").text #gsub
+  #     title = book.css("img").attr('alt').value
+  #     url = ?
+  #   end
+  # end
+  #
+  #
+  #
+  # scraper method ready to scrape anything passed into it --all goodreads index pages are same as fiction ones
+  # if all else fails, just offer one section
+  #   start app, see list, choose more, see information, go back and choose another
 
 #   books = page.css("div.resultShown")
 # books.each do |book|

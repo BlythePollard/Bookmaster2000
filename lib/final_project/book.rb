@@ -1,37 +1,26 @@
 class FinalProject::Book
 
-attr_accessor :title
+attr_accessor :title, :upvotes, :url
 
-  @@all =[]
+@@all = []
+#initializes a book with title, upvotes, and url, creates a books array
 
-  def initialize(title)
-    @title = "hi"
+  def initialize(title, upvotes, url)
+    @title = title
+    @upvotes = upvotes
+    @url = url
+    @books = []
     @@all << self
   end
 
   def self.all
     @@all
   end
+#Scrapes book instance as long as @books is empty, returns @books
+  def books
+    FinalProject::Scraper.scrape_books(self) if @books.empty?
+    @books
+  end
 
-
-# def self.title
-#   @title = "This is the book title"
-# end
-#
-# def author
-#   @author = "This is the book author"
-# end
-#
-# def upvotes
-#   @upvotes = "This book has 1000000 upvotes"
-# end
-#
-# def description
-#   @description = "This is all about this book"
-# end
-#
-# def url
-#   @url = "www.thisbook.com"
-# end
 
 end
