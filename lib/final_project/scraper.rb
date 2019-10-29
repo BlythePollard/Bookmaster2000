@@ -1,9 +1,7 @@
 class FinalProject::Scraper
 
-
-
-  def self.scrape_fiction #(genre) #what is genre??? is it necessary?
-    page = Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
+  def self.scrape_fiction(page_url)
+    page = Nokogiri::HTML(open("page_url"))
     books = page.css("div.resultShown")
     books.each do |book|
        upvotes = book.css("strong.result").text.gsub("\n", "")
@@ -12,7 +10,6 @@ class FinalProject::Scraper
        FinalProject::Book.new(title, upvotes, url)
     end
   end
-
 
  # scraper method ready to scrape anything passed into it --all goodreads index pages are same as fiction ones
  # if all else fails, just offer one section

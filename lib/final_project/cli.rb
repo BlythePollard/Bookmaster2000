@@ -1,4 +1,6 @@
 class FinalProject::CLI #namespacing--the cli that belongs to this project--module name with CLI nested
+  #BASE_PATH = "https://www.goodreads.com/choiceawards/best-fiction-books-2018"
+
 
   def call
     puts "\nWelcome to the Bookfinder 2000! With this app, you'll be able to find a great read that is custom-tailored to your preferences. Ready to search? (y/n)\n"
@@ -36,10 +38,13 @@ class FinalProject::CLI #namespacing--the cli that belongs to this project--modu
   # end
 
   def show_books_for(chosen_genre)
+
     genre = @genres[chosen_genre.to_i - 1] #problem: chosen_genre is a string!
     puts "Here are the books for #{genre}:"
     if genre == "Best Fiction"
-      FinalProject::Book.fiction_books.each.with_index(1) do |book, index|
+      page_url = "https://www.goodreads.com/choiceawards/best-fiction-books-2018"
+      find_books = FinalProject::Book.fiction_books(page_url)
+      find_books.each.with_index(1) do |book, index|
       puts "#{index}. #{book.title} - #{book.upvotes} upvotes - https://www.goodreads.com#{book.url}"
     #elsif for each genre
     end
