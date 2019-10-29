@@ -2,7 +2,7 @@ class FinalProject::Scraper
 
 
 
-  def self.scrape_fiction(genre)
+  def self.scrape_fiction #(genre) #what is genre??? is it necessary?
     page = Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
     books = page.css("div.resultShown")
     books.each do |book|

@@ -1,6 +1,6 @@
 class FinalProject::Book
 
-attr_accessor :title, :upvotes, :url, :books
+attr_accessor :title, :upvotes, :url, :books, :genre
 
 @@all = []
 #initializes a book with title, upvotes, and url, creates a books array
@@ -16,9 +16,11 @@ attr_accessor :title, :upvotes, :url, :books
   def self.all
     @@all
   end
+
 #Scrapes book instance as long as @books is empty, returns @books
   def self.fiction_books
     new_book = FinalProject::Scraper.scrape_fiction(self) if @books.empty?
+    #error = books is nil, not []
     @books
 end
 
