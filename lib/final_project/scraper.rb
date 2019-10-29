@@ -1,16 +1,16 @@
 class FinalProject::Scraper
 
-  def self.scrape_books(genre)
-    # page = Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
-    # books = page.css("div.resultShown")
-    # books.each do |book|
-    #    upvotes = book.css("strong.result").text #gsub
-    #    title = book.css("img").attr('alt').value
-    #    url = "hello url"
-    #    FinalProject::Book.new(title, upvotes, url)
-    # end
-    FinalProject::Book.new("title1", "upvotes1", "url1")
-    FinalProject::Book.new("title2", "upvotes2", "url2")
+
+
+  def self.scrape_fiction(genre)
+    page = Nokogiri::HTML(open("https://www.goodreads.com/choiceawards/best-fiction-books-2018"))
+    books = page.css("div.resultShown")
+    books.each do |book|
+       upvotes = book.css("strong.result").text.gsub("\n", "")
+       title = book.css("img").attr('alt').value
+       url = book.css("a.pollAnswer__bookLink").attr('href').value
+       FinalProject::Book.new(title, upvotes, url)
+    end
   end
 
 

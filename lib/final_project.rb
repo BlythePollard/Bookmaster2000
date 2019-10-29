@@ -7,6 +7,7 @@ require_relative "./final_project/scraper"
 
 require 'pry'
 require 'nokogiri'
+require 'open-uri'
 
 module FinalProject
   class Error < StandardError; end
